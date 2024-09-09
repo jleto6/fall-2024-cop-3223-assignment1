@@ -7,6 +7,7 @@
 
 // Function prototypes
 double calculateDistance();
+double calculateDistanceHelper();
 double calculatePerimeter();
 double calculateArea();
 double calculateWidth();
@@ -16,6 +17,7 @@ double askForUserInput();
 int main(int argc, char **argv) {
     // Call the functions
     double distance = calculateDistance();
+    calculateDistanceHelper(distance);
     double perimeter = calculatePerimeter();
     double area = calculateArea();
     double width = calculateWidth();
@@ -33,10 +35,7 @@ double askForUserInput() {
 // Function to calculate distance
 double calculateDistance() {
     
-    static double distance = -1;
-
-    if (distance == -1) {  // Check if distance needs to be calculated
-        double x1, x2, y1, y2;
+    double x1, x2, y1, y2, distance;
    
     printf("Enter x1: ");
     x1 = askForUserInput();
@@ -53,10 +52,13 @@ double calculateDistance() {
     
     // Calculate the distance
     distance = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
-    printf("The distance between the two points is %.3lf\n", distance);
     
     return distance;
     }
+
+// Helper function to print the distance
+double calculateDistanceHelper(double distance) {
+    printf("The distance between the two points is %.3lf\n", distance);
 }
 
 // Function to calculate and output the perimeter
@@ -85,6 +87,6 @@ double calculateWidth() {
 // Function to calculate and output the height 
 double calculateHeight() {
     double distance = calculateDistance();
-    printf("The height of the city encompassed by your request is %.3lfg\n", distance);
+    printf("The height of the city encompassed by your request is %.3lf\n", distance);
     return 1.0; 
 }
